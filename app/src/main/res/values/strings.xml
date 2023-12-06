@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">OmniMarket</string>
+    <string name="username">Username</string>
+    <string name="welcome_to_omnimarket_n_user_name">Welcome to OmniMarket, \n [User.name]</string>
+    <string name="past_orders">Past Orders</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="shop">Shop</string>
+    <string name="logout">Logout</string>
+    <string name="admin_mode">Admin Mode</string>
+    <string name="enter_information_to_sign_up">Enter Information to Sign Up</string>
+    <string name="username_signup">Username</string>
+    <string name="name_signup">Name</string>
+    <string name="already_have_an_account">Already Have An Account</string>
+    <string name="login_signup">Login</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password_signup">Password</string>
+    <string name="welcome_to_the_omnimarket">Welcome to the OmniMarket,\n</string>
+    <string name="delete_user">Delete User</string>
+</resources>

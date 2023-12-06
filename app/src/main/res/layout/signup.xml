@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/instructions"
+        android:text="@string/enter_information_to_sign_up"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:width="250dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/username_signup"
+        android:hint="@string/username_signup"
+        android:textSize="20sp"
+        android:width="220dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/instructions"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:padding="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_signup"
+        android:hint="@string/name_signup"
+        android:textSize="20sp"
+        android:width="220dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/username_signup"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:padding="20dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_signup"
+        android:hint="@string/password_signup"
+        android:textSize="20sp"
+        android:width="220dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/name_signup"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:padding="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirm_password_signup"
+        android:hint="@string/confirm_password"
+        android:textSize="20sp"
+        android:width="220dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/password_signup"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:padding="20dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup_confirm_button"
+        android:text="@string/sign_up_button"
+        android:textSize="25sp"
+        android:width="220dp"
+        android:height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_password_signup"
+        android:layout_marginStart="100dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/already_user"
+        android:text="@string/already_have_an_account"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/signup_confirm_button"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_return_button"
+        android:text="@string/login_signup"
+        android:textSize="25sp"
+        android:width="220dp"
+        android:height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/already_user"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
