@@ -3,10 +3,12 @@ package com.example.omnimarket;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.omnimarket.DB.AppDataBaseItem;
+import com.example.omnimarket.DB.AppDataBase;
 
-@Entity(tableName = AppDataBaseItem.ITEM_TABLE)
-public class Item {
+import java.io.Serializable;
+
+@Entity(tableName = AppDataBase.ITEM_TABLE)
+public class Item implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int mItemID;

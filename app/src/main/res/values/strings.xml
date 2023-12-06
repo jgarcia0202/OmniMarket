@@ -17,4 +17,12 @@
     <string name="password_signup">Password</string>
     <string name="welcome_to_the_omnimarket">Welcome to the OmniMarket,\n</string>
     <string name="delete_user">Delete User</string>
+    <string name="item_display">Item Display</string>
+    <string name="home">Home</string>
+    <string name="available_on_the_market">Available on the Market</string>
+    <string name="find_item">Find Item</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="find">Find</string>
+    <string name="item_name">Item Name</string>
+    <string name="items_go_here">ITEMS GO HERE</string>
 </resources>

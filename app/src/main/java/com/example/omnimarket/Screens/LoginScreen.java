@@ -1,4 +1,4 @@
-package com.example.omnimarket;
+package com.example.omnimarket.Screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.omnimarket.DB.AppDataBase;
 import com.example.omnimarket.DB.UserDAO;
+import com.example.omnimarket.R;
+import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.ActivityMainBinding;
 
 import java.util.List;
@@ -21,7 +23,7 @@ import java.util.List;
 public class LoginScreen extends AppCompatActivity {
     ActivityMainBinding binding;
 
-    private static final String LOGIN_SCREEN = "com.example.omnimarket.LoginScreen";
+    private static final String LOGIN_SCREEN = "com.example.omnimarket.Screens.LoginScreen";
 
     TextView mSignInDisplay;
     TextView mSignUpDisplay;

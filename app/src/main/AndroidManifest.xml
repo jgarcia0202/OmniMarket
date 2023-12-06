@@ -13,7 +13,7 @@
         android:theme="@style/Theme.OmniMarket"
         tools:targetApi="31">
         <activity
-            android:name=".LoginScreen"
+            android:name=".Screens.LoginScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeScreen"
+            android:name=".Screens.HomeScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupScreen"
+            android:name=".Screens.SignupScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Screens.ShopScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

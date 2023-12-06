@@ -1,4 +1,4 @@
-package com.example.omnimarket;
+package com.example.omnimarket.Screens;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.omnimarket.DB.AppDataBase;
 import com.example.omnimarket.DB.UserDAO;
+import com.example.omnimarket.R;
+import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.HomepageBinding;
 
 import java.util.List;
@@ -22,20 +24,19 @@ import java.util.List;
 public class HomeScreen extends AppCompatActivity {
     HomepageBinding binding;
 
-    private static final String HOME_SCREEN = "com.example.omnimarket.HomeScreen";
+    private static final String HOME_SCREEN = "com.example.omnimarket.Screens.HomeScreen";
 
     TextView mWelcomeMessage;
 
     Button mPastOrders;
-    Button mShoppingCart;
-    Button mShop;
+    Button mCancel;
+    Button mFind;
     Button mLogout;
     Button mAdmin;
     Button mDelete;
 
     UserDAO mUserDAO;
 
-    List<User> mUserList;
     User mReturnedUser;
     boolean adminMode = false;
 
@@ -49,8 +50,8 @@ public class HomeScreen extends AppCompatActivity {
 
         mWelcomeMessage = binding.welcomeMessage;
         mPastOrders = binding.pastOrdersButton;
-        mShoppingCart = binding.shoppingCartButton;
-        mShop = binding.shopButton;
+        mCancel = binding.cancelOrderButton;
+        mFind = binding.findButton;
         mLogout = binding.logoutButton;
         mAdmin = binding.adminModeButton;
         mDelete = binding.deleteUserButton;
@@ -66,6 +67,14 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = LoginScreen.getIntent(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+
+        mFind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = ShopScreen.getIntent(getApplicationContext());
                 startActivity(intent);
             }
         });

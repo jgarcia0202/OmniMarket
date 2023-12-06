@@ -1,4 +1,4 @@
-package com.example.omnimarket;
+package com.example.omnimarket.Screens;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import androidx.room.Room;
 
 import com.example.omnimarket.DB.AppDataBase;
 import com.example.omnimarket.DB.UserDAO;
+import com.example.omnimarket.R;
+import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.SignupBinding;
 
 import java.util.List;
