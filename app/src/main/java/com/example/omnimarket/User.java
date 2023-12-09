@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 import com.example.omnimarket.DB.AppDataBase;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity(tableName = AppDataBase.USER_TABLE)
 public class User implements Serializable {
@@ -27,13 +28,10 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "mUserID='" + mUserID + '\'' +
-                "mUserName='" + mUserName + '\'' +
-                "mName='" + mName + '\'' +
-                ", mPassword='" + mPassword + '\'' +
-                ", mIsAdmin=" + mIsAdmin +
-                '}';
+        return  "UserName = " + mUserName + "\n" +
+                "Name = " + mName + "\n" +
+                "IsAdmin = " + mIsAdmin + "\n" +
+                "----------------------------------\n";
     }
 
     public int getUserID() {

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.omnimarket.DB.AppDataBase;
-import com.example.omnimarket.DB.UserDAO;
+import com.example.omnimarket.DB.ShopDAO;
 import com.example.omnimarket.R;
 import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.ActivityMainBinding;
@@ -34,7 +34,7 @@ public class LoginScreen extends AppCompatActivity {
     Button mLogin;
     Button mSignUp;
 
-    UserDAO mUserDAO;
+    ShopDAO mShopDAO;
 
     List<User> mUserList;
 
@@ -53,16 +53,15 @@ public class LoginScreen extends AppCompatActivity {
         mLogin = binding.loginButton;
         mSignUp = binding.signUpButton;
 
-        mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
+        mShopDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
-                .UserDao();
+                .ShopDAO();
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkUser();
-
             }
         });
         mSignUp.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +85,7 @@ public class LoginScreen extends AppCompatActivity {
     private void checkUser(){
         String username = mUser.getText().toString();
         String password = mPass.getText().toString();
-        User user = mUserDAO.getUserByUserName(username, password);
+        User user = mShopDAO.getUserByUserName(username, password);
         if (user == null){
             Toast.makeText(this, "No User Found, If You Don't Have An Account Please Sign Up", Toast.LENGTH_SHORT).show();
         } else if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
@@ -99,12 +98,12 @@ public class LoginScreen extends AppCompatActivity {
     }
 
     private void checkForUsers(){
-        mUserList = mUserDAO.getUsers();
+        mUserList = mShopDAO.getUsers();
         User testUser = new User("testuser1", "testuser1", "testuser1", false);
         User admin = new User("admin2", "admin2", "admin2", true);
         if (mUserList.isEmpty()){
-            mUserDAO.insert(testUser);
-            mUserDAO.insert(admin);
+            mShopDAO.insert(testUser);
+            mShopDAO.insert(admin);
         }
     }
 }

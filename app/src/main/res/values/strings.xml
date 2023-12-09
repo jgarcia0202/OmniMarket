@@ -25,4 +25,9 @@
     <string name="find">Find</string>
     <string name="item_name">Item Name</string>
     <string name="items_go_here">ITEMS GO HERE</string>
+    <string name="type_the_item_name">Type the item name</string>
+    <string name="home_from_pastOrders">Home</string>
+    <string name="past_orders_ndisplayed_here">Past Orders\nDisplayed Here</string>
+    <string name="no_items_purchased">NO ITEMS PURCHASED!</string>
+    <string name="pastorders_displayed">pastOrders Displayed</string>
 </resources>

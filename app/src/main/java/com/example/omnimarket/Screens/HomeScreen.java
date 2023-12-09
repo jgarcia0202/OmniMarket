@@ -7,6 +7,7 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,18 +15,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.omnimarket.DB.AppDataBase;
-import com.example.omnimarket.DB.UserDAO;
+import com.example.omnimarket.DB.ShopDAO;
 import com.example.omnimarket.R;
 import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.HomepageBinding;
 
-import java.util.List;
-
 public class HomeScreen extends AppCompatActivity {
     HomepageBinding binding;
 
-    private static final String HOME_SCREEN = "com.example.omnimarket.Screens.HomeScreen";
-
+    private static final String USER_ID_KEY = "com.example.omnimarket.USER_ID_KEY";
     TextView mWelcomeMessage;
 
     Button mPastOrders;
@@ -35,7 +33,7 @@ public class HomeScreen extends AppCompatActivity {
     Button mAdmin;
     Button mDelete;
 
-    UserDAO mUserDAO;
+    ShopDAO mShopDAO;
 
     User mReturnedUser;
     boolean adminMode = false;
@@ -50,17 +48,18 @@ public class HomeScreen extends AppCompatActivity {
 
         mWelcomeMessage = binding.welcomeMessage;
         mPastOrders = binding.pastOrdersButton;
-        mCancel = binding.cancelOrderButton;
+        //mCancel = binding.cancelOrderButton;
         mFind = binding.findButton;
         mLogout = binding.logoutButton;
         mAdmin = binding.adminModeButton;
         mDelete = binding.deleteUserButton;
         mReturnedUser = (User) getIntent().getSerializableExtra("USER_KEY");
 
-        mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
+        mShopDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
-                .UserDao();
+                .ShopDAO();
+
 
         //BUTTON CLICK FUNCTIONS BELOW
         mLogout.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +74,16 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = ShopScreen.getIntent(getApplicationContext());
+                intent.putExtra("USER_KEY", mReturnedUser);
+                startActivity(intent);
+            }
+        });
+
+        mPastOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = PastOrders.getIntent((getApplicationContext()), mReturnedUser);
+                intent.putExtra("USER_KEY", mReturnedUser);
                 startActivity(intent);
             }
         });
@@ -89,13 +98,9 @@ public class HomeScreen extends AppCompatActivity {
         mAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (adminMode == false){
-                    Toast.makeText(getApplicationContext(), "ADMIN MODE ON", Toast.LENGTH_SHORT).show();
-                    adminMode = true;
-                    return;
-                }
-                Toast.makeText(getApplicationContext(), "ADMIN MODE OFF", Toast.LENGTH_SHORT).show();
-                adminMode = false;
+                Intent intent = AdminMenu.getIntent(getApplicationContext(), mReturnedUser);
+                intent.putExtra("USER_KEY", mReturnedUser);
+                startActivity(intent);
             }
         });
 
@@ -110,6 +115,7 @@ public class HomeScreen extends AppCompatActivity {
 
     public static Intent getIntent(Context context, User user){
         Intent intent = new Intent(context, HomeScreen.class);
+        intent.putExtra(USER_ID_KEY, user.getUserID());
         return intent;
     }
 
@@ -119,7 +125,7 @@ public class HomeScreen extends AppCompatActivity {
                 .setMessage("Are you sure you want to delete user?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which){
-                        mUserDAO.delete(user);
+                        mShopDAO.delete(user);
                         Toast.makeText(getApplicationContext(), "User Has Been Deleted", Toast.LENGTH_SHORT).show();
                         Intent intent = LoginScreen.getIntent(getApplicationContext());
                         startActivity(intent);

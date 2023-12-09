@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.omnimarket.DB.AppDataBase;
-import com.example.omnimarket.DB.UserDAO;
+import com.example.omnimarket.DB.ShopDAO;
 import com.example.omnimarket.R;
 import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.SignupBinding;
@@ -34,7 +34,7 @@ public class SignupScreen extends AppCompatActivity {
     Button mSignupButton;
     Button mLoginButton;
 
-    UserDAO mUserDAO;
+    ShopDAO mShopDAO;
     User mUser = null;
 
     List<User> mUserList;
@@ -56,10 +56,10 @@ public class SignupScreen extends AppCompatActivity {
         mSignupButton = binding.signupConfirmButton;
         mLoginButton = binding.loginReturnButton;
 
-        mUserDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
+        mShopDAO = Room.databaseBuilder(this, AppDataBase.class, AppDataBase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
-                .UserDao();
+                .ShopDAO();
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,7 @@ public class SignupScreen extends AppCompatActivity {
 
     //MADE IN GYMLOGS TO DISPLAY LOGS IN MAIN DISPLAY, KEEP IN CASE NEEDED
     private void refreshDisplay(){
-        mUserList = mUserDAO.getUsers();
+        mUserList = mShopDAO.getUsers();
         //if (mUserList.isEmpty())
     }
     private void createNewUser(){
@@ -95,7 +95,7 @@ public class SignupScreen extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Passwords Do Not Match, Try Again!", Toast.LENGTH_SHORT).show();
             return;
         }
-        mUserList = mUserDAO.getUsers();
+        mUserList = mShopDAO.getUsers();
         for (User user: mUserList){
             if (user.getUserName().equals(username)){
                 Toast.makeText(getApplicationContext(), "Username Already In Use!", Toast.LENGTH_SHORT).show();
@@ -105,7 +105,8 @@ public class SignupScreen extends AppCompatActivity {
         mUser = new User(username, name, password,false);
         Toast.makeText(getApplicationContext(), "Welcome " + mUser.getName() + "!", Toast.LENGTH_SHORT).show();
         Intent intent = HomeScreen.getIntent(getApplicationContext(), mUser);
-        mUserDAO.insert(mUser);
+        mShopDAO.insert(mUser);
+        //intent.putExtra(USER_ID_KEY, mUser.getUserID());
         startActivity(intent);
     }
 

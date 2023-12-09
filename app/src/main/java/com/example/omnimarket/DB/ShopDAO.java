@@ -6,12 +6,13 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.omnimarket.Item;
 import com.example.omnimarket.User;
 
 import java.util.List;
 
 @Dao
-public interface UserDAO {
+public interface ShopDAO {
 
     @Insert
     void insert(User... users);
@@ -27,5 +28,20 @@ public interface UserDAO {
 
     @Query("SELECT * FROM " + AppDataBase.USER_TABLE + " WHERE mUserName = :userName AND mPassword = :password")
     User getUserByUserName(String userName, String password);
+
+    @Insert
+    void insert(Item... items);
+
+    @Update
+    void update(Item... item);
+
+    @Delete
+    void delete(Item item);
+
+    @Query("SELECT * FROM " + AppDataBase.ITEM_TABLE)
+    List<Item> getItems();
+
+    @Query("SELECT * FROM " + AppDataBase.ITEM_TABLE +" WHERE mUserID = :userID")
+    List<Item> getItemsByUserID(int userID);
 
 }

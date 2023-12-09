@@ -2,12 +2,9 @@ package com.example.omnimarket.DB;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.omnimarket.Item;
 import com.example.omnimarket.User;
@@ -21,8 +18,7 @@ public abstract class AppDataBase extends RoomDatabase {
     private static volatile AppDataBase instance;
     private static final Object LOCK = new Object();
 
-    public abstract UserDAO UserDao();
-    public abstract ItemDAO ItemDao();
+    public abstract ShopDAO ShopDAO();
 
     public static AppDataBase getInstance(Context context){
         if(instance == null){
@@ -35,12 +31,4 @@ public abstract class AppDataBase extends RoomDatabase {
         }
         return instance;
     }
-
-    //public static final Migration MIGRATION_1_2 = new Migration(1,2) {
-    //        @Override
-    //        public void migrate(SupportSQLiteDatabase database) {
-    //            database.execSQL("CREATE TABLE IF NOT EXISTS item_table (...)");
-    //        }
-    //    };
-
 }

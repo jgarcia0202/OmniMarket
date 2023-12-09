@@ -1,14 +1,15 @@
 package com.example.omnimarket;
 
+import android.widget.Toast;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.omnimarket.DB.AppDataBase;
 
-import java.io.Serializable;
 
 @Entity(tableName = AppDataBase.ITEM_TABLE)
-public class Item implements Serializable {
+public class Item {
 
     @PrimaryKey(autoGenerate = true)
     private int mItemID;
@@ -17,23 +18,45 @@ public class Item implements Serializable {
     private double mPrice;
     private double mQuantity;
     private String mDescription;
+    private int mUserID;
 
-    public Item(String name, double price, double quantity, String description) {
+    public Item(String name, double price, double quantity, String description, int userID) {
         mName = name;
         mPrice = price;
         mQuantity = quantity;
         mDescription = description;
+
+        mUserID = userID;
     }
 
     @Override
     public String toString() {
-        return "Item{" +
-                "mItemID='" + mItemID + '\'' +
-                "mName='" + mName + '\'' +
-                ", mPrice=" + mPrice +
-                ", mQuantity=" + mQuantity +
-                ", mDescription='" + mDescription + '\'' +
-                '}';
+        return mName + "\n" +
+                "Price: $" + mPrice + "\n"+
+                "Availability: " + checkQuantity() + "\n" +
+                "\n" +
+                "Details: " + mDescription + ".\n";
+    }
+
+    public String toString2() {
+        return mName + "\n" +
+                "Price: $" + mPrice + "\n"+
+                "\n" +
+                "Details: " + mDescription + ".\n";
+    }
+
+    public int getUserID() {
+        return mUserID;
+    }
+
+    public void setUserID(int userID) {
+        mUserID = userID;
+    }
+    public String checkQuantity(){
+        if (mQuantity <= 0){
+            return ("Not Available");
+        }
+        return ("Available");
     }
 
     public int getItemID() {
@@ -75,4 +98,13 @@ public class Item implements Serializable {
     public void setDescription(String description) {
         this.mDescription = description;
     }
+
+    public void reduceQuantity(){
+        if (mQuantity <= 0){
+            System.out.println("Cannot Purchase, There is no " + mName + " left");
+            return;
+        }
+        mQuantity = mQuantity - 1;
+    }
+
 }
