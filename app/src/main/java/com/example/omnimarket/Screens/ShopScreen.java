@@ -50,7 +50,7 @@ AutoCompleteTextView mAutoCompleteTextView;
         setContentView(binding.getRoot());
 
         mShopWelcome = binding.shopWelcome;
-        mItemDisplay = binding.itemDisplay;//findViewById(R.id.item_display);
+        mItemDisplay = binding.itemDisplay;
         mScrollView = binding.scrollShop;
         mHome = binding.shopHomeButton;
         mAutoCompleteTextView = binding.searchDropDown;

@@ -16,9 +16,12 @@ import android.widget.Toast;
 
 import com.example.omnimarket.DB.AppDataBase;
 import com.example.omnimarket.DB.ShopDAO;
+import com.example.omnimarket.Item;
 import com.example.omnimarket.R;
 import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.HomepageBinding;
+
+import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
     HomepageBinding binding;
@@ -34,8 +37,8 @@ public class HomeScreen extends AppCompatActivity {
     Button mDelete;
 
     ShopDAO mShopDAO;
-
     User mReturnedUser;
+    List<Item> itemsHeld;
     boolean adminMode = false;
 
     @Override
@@ -125,6 +128,7 @@ public class HomeScreen extends AppCompatActivity {
                 .setMessage("Are you sure you want to delete user?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which){
+                        removeItems();
                         mShopDAO.delete(user);
                         Toast.makeText(getApplicationContext(), "User Has Been Deleted", Toast.LENGTH_SHORT).show();
                         Intent intent = LoginScreen.getIntent(getApplicationContext());
@@ -138,6 +142,16 @@ public class HomeScreen extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+
+    public void removeItems(){
+        itemsHeld = mShopDAO.getItemsByUserID(mReturnedUser.getUserID());
+        for (Item item: itemsHeld){
+            item.setUserID(-1);
+            item.setQuantity(item.getQuantity() + 1);
+            mShopDAO.update(item);
+        }
+
     }
 
 }

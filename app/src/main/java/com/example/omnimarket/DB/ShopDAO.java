@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.omnimarket.Item;
+import com.example.omnimarket.Purchase;
 import com.example.omnimarket.User;
 
 import java.util.List;
@@ -44,4 +45,12 @@ public interface ShopDAO {
     @Query("SELECT * FROM " + AppDataBase.ITEM_TABLE +" WHERE mUserID = :userID")
     List<Item> getItemsByUserID(int userID);
 
+    @Insert
+    void insert(Purchase... purchases);
+
+    @Update
+    void update(Purchase... purchase);
+
+    @Delete
+    void delete(Purchase purchase);
 }

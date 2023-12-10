@@ -30,8 +30,7 @@ public class User implements Serializable {
     public String toString() {
         return  "UserName = " + mUserName + "\n" +
                 "Name = " + mName + "\n" +
-                "IsAdmin = " + mIsAdmin + "\n" +
-                "----------------------------------\n";
+                "IsAdmin = " + mIsAdmin + "\n" ;
     }
 
     public int getUserID() {
