@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.omnimarket.DB.AppDataBase;
+import com.example.omnimarket.DB.ShopDAO;
 
 @Entity(tableName = AppDataBase.PURCHASE_DATABASE)
 public class Purchase {
@@ -11,20 +12,23 @@ public class Purchase {
     @PrimaryKey(autoGenerate = true)
     private int mPurchaseID;
 
-    private int userID;
-    private int itemID;
+    private int mUserID;
+    private int mItemID;
+    private int mQuantity;
 
-    public Purchase(int userID, int itemID) {
-        this.userID = userID;
-        this.itemID = itemID;
+    public Purchase(int userID, int itemID, int quantity) {
+        this.mUserID = userID;
+        this.mItemID = itemID;
+        this.mQuantity = quantity;
     }
 
     @Override
     public String toString() {
         return "Purchase{" +
                 "mPurchaseID=" + mPurchaseID +
-                ", userID=" + userID +
-                ", itemID=" + itemID +
+                ", mUserID=" + mUserID +
+                ", mItemID=" + mItemID +
+                ", mQuantity=" + mQuantity +
                 '}';
     }
 
@@ -37,18 +41,26 @@ public class Purchase {
     }
 
     public int getUserID() {
-        return userID;
+        return mUserID;
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        mUserID = userID;
     }
 
     public int getItemID() {
-        return itemID;
+        return mItemID;
     }
 
     public void setItemID(int itemID) {
-        this.itemID = itemID;
+        mItemID = itemID;
+    }
+
+    public int getQuantity() {
+        return mQuantity;
+    }
+
+    public void setQuantity(int quantity) {
+        mQuantity = quantity;
     }
 }

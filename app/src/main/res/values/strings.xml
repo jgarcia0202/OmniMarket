@@ -30,4 +30,6 @@
     <string name="past_orders_ndisplayed_here">Past Orders\nDisplayed Here</string>
     <string name="no_items_purchased">NO ITEMS PURCHASED!</string>
     <string name="pastorders_displayed">pastOrders Displayed</string>
+    <string name="remove_all">Remove All</string>
+    <string name="remove_1">Remove 1</string>
 </resources>

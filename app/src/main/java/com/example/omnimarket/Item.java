@@ -18,15 +18,13 @@ public class Item {
     private double mPrice;
     private double mQuantity;
     private String mDescription;
-    private int mUserID;
 
-    public Item(String name, double price, double quantity, String description, int userID) {
+    public Item(String name, double price, double quantity, String description) {
         mName = name;
         mPrice = price;
         mQuantity = quantity;
         mDescription = description;
 
-        mUserID = userID;
     }
 
     @Override
@@ -45,18 +43,19 @@ public class Item {
                 "Details: " + mDescription + ".\n";
     }
 
-    public int getUserID() {
-        return mUserID;
+    public String toString3() {
+        return mName + "\n" +
+                "Price: $" + mPrice + "\n"+
+                "Amount Owned: " + checkQuantity() + "\n" +
+                "\n" +
+                "Details: " + mDescription + ".\n";
     }
 
-    public void setUserID(int userID) {
-        mUserID = userID;
-    }
     public String checkQuantity(){
         if (mQuantity <= 0){
             return ("Not Available");
         }
-        return ("Available");
+        return (mQuantity + " still available");
     }
 
     public int getItemID() {
@@ -100,10 +99,6 @@ public class Item {
     }
 
     public void reduceQuantity(){
-        if (mQuantity <= 0){
-            System.out.println("Cannot Purchase, There is no " + mName + " left");
-            return;
-        }
         mQuantity = mQuantity - 1;
     }
 

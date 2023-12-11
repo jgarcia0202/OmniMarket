@@ -7,7 +7,6 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 import com.example.omnimarket.DB.AppDataBase;
 import com.example.omnimarket.DB.ShopDAO;
 import com.example.omnimarket.Item;
+import com.example.omnimarket.Purchase;
 import com.example.omnimarket.R;
 import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.HomepageBinding;
@@ -38,8 +38,8 @@ public class HomeScreen extends AppCompatActivity {
 
     ShopDAO mShopDAO;
     User mReturnedUser;
-    List<Item> itemsHeld;
-    boolean adminMode = false;
+    List<Purchase> mPurchaseList;
+    Item mItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class HomeScreen extends AppCompatActivity {
 
         mWelcomeMessage = binding.welcomeMessage;
         mPastOrders = binding.pastOrdersButton;
-        //mCancel = binding.cancelOrderButton;
         mFind = binding.findButton;
         mLogout = binding.logoutButton;
         mAdmin = binding.adminModeButton;
@@ -145,11 +144,12 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void removeItems(){
-        itemsHeld = mShopDAO.getItemsByUserID(mReturnedUser.getUserID());
-        for (Item item: itemsHeld){
-            item.setUserID(-1);
-            item.setQuantity(item.getQuantity() + 1);
-            mShopDAO.update(item);
+        mPurchaseList = mShopDAO.getPurchasesByUserId(mReturnedUser.getUserID());
+        for (Purchase purchase: mPurchaseList){
+            mItem = mShopDAO.getItemById(purchase.getItemID());
+            mItem.setQuantity(mItem.getQuantity() + purchase.getQuantity());
+            mShopDAO.update(mItem);
+            mShopDAO.delete(purchase);
         }
 
     }

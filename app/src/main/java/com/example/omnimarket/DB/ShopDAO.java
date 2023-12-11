@@ -42,8 +42,8 @@ public interface ShopDAO {
     @Query("SELECT * FROM " + AppDataBase.ITEM_TABLE)
     List<Item> getItems();
 
-    @Query("SELECT * FROM " + AppDataBase.ITEM_TABLE +" WHERE mUserID = :userID")
-    List<Item> getItemsByUserID(int userID);
+    @Query("SELECT * FROM " + AppDataBase.ITEM_TABLE + " WHERE mItemID = :itemId")
+    Item getItemById(int itemId);
 
     @Insert
     void insert(Purchase... purchases);
@@ -53,4 +53,16 @@ public interface ShopDAO {
 
     @Delete
     void delete(Purchase purchase);
+
+    @Query("SELECT * FROM " + AppDataBase.PURCHASE_DATABASE + " WHERE mUserID = :userId AND mItemID = :itemId")
+    Purchase getPurchaseByUserItem(int userId, int itemId);
+
+    @Query("SELECT * FROM " + AppDataBase.PURCHASE_DATABASE + " WHERE mItemID = :itemId")
+    Purchase getPurchaseByItemId( int itemId);
+
+    @Query("SELECT * FROM " + AppDataBase.PURCHASE_DATABASE + " WHERE mUserID = :userId")
+    List<Purchase> getPurchasesByUserId(int userId);
+
+    @Query("SELECT * FROM " + AppDataBase.PURCHASE_DATABASE + " WHERE mItemID = :itemId")
+    List<Purchase> getPurchasesByItemId(int itemId);
 }

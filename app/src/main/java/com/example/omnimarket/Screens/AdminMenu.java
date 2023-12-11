@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -22,10 +21,10 @@ import androidx.room.Room;
 import com.example.omnimarket.DB.AppDataBase;
 import com.example.omnimarket.DB.ShopDAO;
 import com.example.omnimarket.Item;
+import com.example.omnimarket.Purchase;
 import com.example.omnimarket.R;
 import com.example.omnimarket.User;
 import com.example.omnimarket.databinding.AdminMenuBinding;
-import com.example.omnimarket.databinding.PastOrdersBinding;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class AdminMenu extends AppCompatActivity {
 
     User mReturnedUser;
     List<User> mActiveUsers;
-    List<Item> mItemsOwned;
+    List<Purchase> mPurchasesMade;
     List<Item> mItemsInShop;
 
     @Override
@@ -168,7 +167,7 @@ public class AdminMenu extends AppCompatActivity {
                         double price = Double.parseDouble(priceEdit.getText().toString());
                         double quantity = Double.parseDouble(quantityEdit.getText().toString());
                         String description = descriptionEdit.getText().toString();
-                        Item item = new Item(name, price, 1, description, -1);
+                        Item item = new Item(name, price, quantity, description);
 
                         mShopDAO.insert(item);
                         Toast.makeText(getApplicationContext(),item.getName() + " has been added to item database", Toast.LENGTH_SHORT).show();
@@ -185,7 +184,7 @@ public class AdminMenu extends AppCompatActivity {
     public void deleteItem(){
         mItemsInShop = mShopDAO.getItems();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete Item Menu");
+        builder.setTitle("Delete Item Menu\nThis Will Remove Purchase From User Too!");
 
         AutoCompleteTextView autoCompleteTextView = new AutoCompleteTextView(this);
         LinearLayout linearLayout = new LinearLayout(this);
@@ -214,11 +213,15 @@ public class AdminMenu extends AppCompatActivity {
 //Methods for the alertDialogs
     public String getUsers(){
         mActiveUsers = mShopDAO.getUsers();
+        int amountOwned = 0;
         String returnedString = "";
         for (User user: mActiveUsers){
-            mItemsOwned = mShopDAO.getItemsByUserID(user.getUserID());
+            mPurchasesMade = mShopDAO.getPurchasesByUserId(user.getUserID());
+            for (Purchase purchase: mPurchasesMade){
+                amountOwned = amountOwned + purchase.getQuantity();
+            }
             returnedString = returnedString + user.toString() +
-                    "Items Owned: " + mItemsOwned.size() + "\n----------------------------------\n";;
+                    "Items Owned: " + amountOwned + "\n----------------------------------\n";;
         }
         return returnedString;
     }
@@ -265,6 +268,8 @@ public class AdminMenu extends AppCompatActivity {
 
     public void handleOrder(Item item){
         Toast.makeText(this, item.getName() + " hase been removed from item database.", Toast.LENGTH_SHORT).show();
+        Purchase purchase = mShopDAO.getPurchaseByItemId(item.getItemID());
+        mShopDAO.delete(purchase);
         mShopDAO.delete(item);
     }
 
