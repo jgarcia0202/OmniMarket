@@ -7,26 +7,39 @@
     tools:context=".Screens.LoginScreen">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/omniMarket_label"
+        android:text="@string/omnimarket"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="100dp"
+        android:textColor="@color/brown_200"/>
+
+
+    <TextView
         android:id="@+id/signIn_textBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="250dp"
         android:height="50dp"
         android:gravity="center"
-        android:text="Please Sign In"
+        android:text="@string/please_log_in"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.05" />
 
     <EditText
         android:id="@+id/username_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:width="200dp"
         android:height="60dp"
         android:gravity="center"
@@ -45,7 +58,7 @@
         android:width="200dp"
         android:height="60dp"
         android:gravity="center"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +73,7 @@
         android:width="175dp"
         android:height="60dp"
         android:gravity="center"
-        android:text="Login"
+        android:text="@string/login"
         android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/password_input"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_button"
         android:layout_marginTop="100dp"
-        android:text="New Here?"
+        android:text="@string/new_here"
         android:textSize="30sp"
         android:gravity="center" />
 
@@ -86,7 +99,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/signUp_button"
         android:gravity="center"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/signUp_textBox"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,5 +107,16 @@
         android:width="175dp"
         android:height="60dp"
         android:layout_marginTop="25dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="113dp"
+        android:layout_height="96dp"
+        app:srcCompat="@drawable/portal_img"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="57dp"
+        app:layout_constraintTop_toBottomOf="@+id/omniMarket_label"
+        app:layout_constraintStart_toStartOf="@+id/omniMarket_label"
+        android:layout_marginStart="40dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

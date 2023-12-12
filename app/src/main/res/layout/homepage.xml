@@ -33,21 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteX="30dp" />
 
-    <!--<Button
-    android:id="@+id/cancel_order_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="100dp"
-    android:layout_marginStart="10dp"
-    android:height="70dp"
-    android:width="160dp"
-    android:gravity="center"
-    android:text="@string/cancel_order"
-    android:textSize="20sp"
-    app:layout_constraintTop_toBottomOf="@id/welcome_message"
-    app:layout_constraintStart_toEndOf="@id/past_orders_button"
-    tools:layout_editor_absoluteX="30dp" /> -->
-
     <Button
         android:id="@+id/find_button"
         android:layout_width="wrap_content"
@@ -104,5 +89,28 @@
         app:layout_constraintTop_toBottomOf="@id/find_button"
         android:visibility="invisible"
         tools:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="111dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcome_message"
+        app:srcCompat="@drawable/portal_img" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageForUser"
+        android:text="@string/workers_may_or_may_not_have_been_harmed_obtaining_these_items_non_the_other_hand_we_are_hiring"
+        android:textSize="17sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/delete_user_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/green"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

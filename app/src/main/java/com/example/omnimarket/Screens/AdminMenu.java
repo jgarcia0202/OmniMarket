@@ -184,7 +184,7 @@ public class AdminMenu extends AppCompatActivity {
     public void deleteItem(){
         mItemsInShop = mShopDAO.getItems();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete Item Menu\nThis Will Remove Purchase From User Too!");
+        builder.setTitle("Delete Item Menu\nThis Will Remove Purchase");
 
         AutoCompleteTextView autoCompleteTextView = new AutoCompleteTextView(this);
         LinearLayout linearLayout = new LinearLayout(this);
@@ -213,9 +213,9 @@ public class AdminMenu extends AppCompatActivity {
 //Methods for the alertDialogs
     public String getUsers(){
         mActiveUsers = mShopDAO.getUsers();
-        int amountOwned = 0;
         String returnedString = "";
         for (User user: mActiveUsers){
+            int amountOwned = 0;
             mPurchasesMade = mShopDAO.getPurchasesByUserId(user.getUserID());
             for (Purchase purchase: mPurchasesMade){
                 amountOwned = amountOwned + purchase.getQuantity();

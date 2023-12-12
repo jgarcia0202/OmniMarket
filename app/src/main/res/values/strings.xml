@@ -32,4 +32,18 @@
     <string name="pastorders_displayed">pastOrders Displayed</string>
     <string name="remove_all">Remove All</string>
     <string name="remove_1">Remove 1</string>
+    <string name="workers_may_or_may_not_have_been_harmed_in_getting_these_items_n_on_the_side_note_we_are_hiring">Workers may or may not have been harmed in getting these items. \n On the side note, we are Hiring!</string>
+    <string name="please_log_in">Please Log In</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="new_here">New Here?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="omnimarket">OmniMarket</string>
+    <string name="admin_menu_n">Admin Menu\n</string>
+    <string name="view_users">View Users</string>
+    <string name="view_items">View Items</string>
+    <string name="add_item">Add Item</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="home_admin">Home</string>
+    <string name="workers_may_or_may_not_have_been_harmed_obtaining_these_items_non_the_other_hand_we_are_hiring">Workers May or May Not Have Been Harmed Obtaining These Items \nOn The Other Hand, We Are Hiring!</string>
 </resources>

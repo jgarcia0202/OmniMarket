@@ -23,6 +23,8 @@ import java.util.List;
 public class SignupScreen extends AppCompatActivity {
     SignupBinding binding;
 
+    //private static final String USER_ID_KEY = "com.example.omnimarket.USER_ID_KEY";
+
     TextView mInstructions;
     TextView mAlreadyUser;
 
@@ -103,10 +105,9 @@ public class SignupScreen extends AppCompatActivity {
             }
         }
         mUser = new User(username, name, password,false);
-        Toast.makeText(getApplicationContext(), "Welcome " + mUser.getName() + "!", Toast.LENGTH_SHORT).show();
-        Intent intent = HomeScreen.getIntent(getApplicationContext(), mUser);
         mShopDAO.insert(mUser);
-        //intent.putExtra(USER_ID_KEY, mUser.getUserID());
+        Toast.makeText(getApplicationContext(), "Welcome " + mUser.getName() + "!", Toast.LENGTH_SHORT).show();
+        Intent intent = LoginScreen.getIntent(getApplicationContext());
         startActivity(intent);
     }
 

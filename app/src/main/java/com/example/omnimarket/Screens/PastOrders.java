@@ -97,7 +97,7 @@ public class PastOrders extends AppCompatActivity {
             TextView mItemView = new TextView(this);
             mItemView.setWidth(900);
             mItemView.setTextSize(15);
-            mItemView.setText("Price: $" + item.getPrice() + "\n" +
+            mItemView.setText(item.getName() + "\n" + "Price: $" + item.getPrice() + "\n" +
                     "Amount Owned: " + purchase.getQuantity() + "\n" +
                     "\nDetails: " + item.getDescription() + ".\n");
             mItemsDisplay.addView(mItemView);

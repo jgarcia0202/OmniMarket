@@ -24,4 +24,7 @@
     <color name="green_500">#8BC34A</color>
     <color name="peach_700">#FF9E80</color>
     <color name="brown_200">#A0522D</color>
+    <color name="blue_light">#36A8F4</color>
+    <color name="peach">#DE5E77</color>
+    <color name="green">#469D2E</color>
 </resources>
